@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Frontend Frameworks</h1>
+					<h3>(HTML/CSS)</h3>
+				</section>
+
+				<section>
+					<h2>What are they?</h2>
+					<p>
+						A collection of CSS (less/sass), JS, and markup that follow patterns and create a convention for building projects.
+					</p>
+				</section>
+
+				<section>
+					<h2>Why use them?</h2>
+					<ul>
+						<li>Structure for frontend organization</li>
+						<li>Extendable baseline for commonly used patterns</li>
+						<li>Create easily reusable elements from one project to another</li>
+						<li>Rapid prototyping/iteration</li>
+						<li>Bringing a project up to speed quickly, so more time can be spent on the things that make it different and unique</li>
+						<li>Thousands of hours of testing have already been done for you!</li>
+						<li>A team of hundreds of developers is backing your code</li>
+						<li>Community</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>What ones exist?</h2>
+						<ul>
+							<li>HTML5 Boilerplate</li>
+							<li>Zurb Foundation</li>
+							<li>Twitter Bootstrap</li>
+							<li>Grid only frameworks: Singularity, Susy, Neat</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>So what's the difference?</h2>
+						<p>Their intention and function is really in each of their names.</p>
+					</section>
+
+					<section>
+						<h2>HTML5 Boilerplate</h2>
+						<ul>
+							<li>Worth noting - widely used</li>
+							<li>Function: Super slim starting point for an HTML project. Some normalization, and avoids the bugs.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Bootstrap</h2>
+						<ul>
+							<li><i>Bootstraps</i> your web app</li>
+							<li>Has more opinions about markup, style, and function</li>
+							<li>Tends toward more handsoff front end devs</li>
+							<li>Takes care of <i>doing</i> a lot for you</li>
+							<li>May often need to "unstyle" conventions put in place by bootstrap</li>
+							<li>Written in Less, ported to Sass</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Foundation</h2>
+						<ul>
+							<li>A set of tools to build a web app upon</li>
+							<li>Doesn't look as pretty or styled out of the box, but the intention is that you are not going to be using it out of the box</li>
+							<li>Very extendable baselines for common patterns</li>
+							<li>Written in Sass originally</li>
+							<li>More comprehensive grid system</li>
+							<li>Very extensive settings system and modular sass setup</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Common concerns and resons maybe not to use such an involved framework</h2>
+						<ul>
+							<li>Classes</li>
+							<li>Size/bloat</li>
+							<li>Limiting structure</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Ewww, the classes...I like my internet semantic!</h2>
+						<ul class="fragment">
+							<li>Foundation comes with a pretty comprehensive set of mixins for each component</li>
+							<li>In fact, you can even turn off all of the default css class output for each component and use it as a mixin library if you like</li>
+						</ul>
+            			<div class="fragment">
+              <span>Example using grid mixins</span>
+              <pre><code data-trim contenteditable>
+.some-informative-class-name {
+  @include grid-row();
+  .another-very-semantic-class {
+    @include grid-col(8);
+  }
+  .content-right {
+    @include grid-col(4);
+    @include i-only-use-mixins(true);
+  }
+}
+              </code></pre>
+            			</div>
+					</section>
+					<section>
+						<h2>What about the bloat?</h2>
+						<ul>
+							<li class="fragment">Broken up into modules that can be included or excluded</li>
+							<li class="fragment">All components not minified ~200k</li>
+							<li class="fragment">Just essentials (typography, grid, buttons, a couple others) ~60k</li>
+							<li class="fragment">Adding F5 to e3_zen without any other additional style compiles to a style.css file at 208kb</li>
+							<li class="fragment">If you change the "Add html classes" setting to false across the board, it compiles to 16kb, same as base compile size</li>
+							<li class="fragment">Use it as a mixin library</li>
+							<li class="fragment">All in all, less than most images, cached after first page visit</li>
+							<li class="fragment">For our purposes with Drupal, I'd argue in most cases, size is a non-issue</li>
+						</ul>
+					</section>
+					<section>
+						<h2>The site design doesn't fit into a grid! (or the established setup of some other css component)</h2>
+						<ul>
+			              <li>Forcing things into the structure Foundation provides is where things can start getting frustrating</li>
+			              <li>If it doesn't fit, don't use it, or modify it, or extend it</li>
+			              <li>The components are designed to be the base bits necessary to accomplish certain tasks, generally, modifying the basic variables via the _settings.scss file, and extending upon that</li>
+			            </ul>
+					</section>
+					<section>
+						<h2>When does Foundation fall short?</h2>
+						<ul>
+							<li>Large team maintaining an internal service/product</li>
+							<li>If the project <i>really</i> needs to completely different, fully functioning row based grid layouts</li>
+							<li>Foundation doesn't support this out of the box</li>
+							<li>Can probably provision it without too much difficulty using the mixins in the _grid.scss file</li>
+						</ul>
+					</section>
+					<section>
+						<h2>I don't like it</h2>
+						<ul>
+							<li>A perfectly good reason not to use it</li>
+						</ul>
+					</section>
+				</section>
+
+        <section>
+          <section>
+            <h2>The Details <a href="http://foundation.zurb.com/docs/" target="_blank">(F5.x)</a></h2>
+            <ul>
+              <li>Foundation uses bower to manage version updates</li>
+              <li>Uses REM (root em) units</li>
+              <li>No IE8 support</li>
+              <li>A well featured _settings.scss file</li>
+              <li>Built in SASS, easily componentized</li>
+              <li>SASS components and JS utilities, some work together</li>
+              <li>If IE8 support is needed (maybe NEVER again???) you can use Foundation 3 for a grid system that supports IE8 (very old, but still a very well featured grid system, I've used it before)</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Noteworthy Components</h2>
+            <ul>
+              <li>Typography</li>
+              <li>Buttons</li>
+              <li>The grids - row and block</li>
+              <li>Top-bar</li>
+              <li>Off-canvas</li>
+              <li>Modals</li>
+              <li>Interchange</li>
+              <li>Equalizr</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Off-Canvas</h2>
+            <ul>
+              <li>Has a great starting point for the off canvas pattern</li>
+              <li>By default, docs</li>
+              <li>Can be extended relatively easily build upon functionality</li>
+              <li>Menu overlap instead of push is an option</li>
+              <li>The pattern creates the most accessible way to recreate native app behavior with window, and either nav, all scrolling separately</li>
+              <li>Given hooks to trigger menu, callbacks, etc</li>
+              <li>NJH, GPB</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Foundation with Drupal</h2>
+            <ul>
+              <li>Foundatoin relies on sass, but not necessarily ruby, can use ruby gem, or libsass with a js compiler, gulp or grunt</li>
+              <li>Pretty much everything can be included with mixins and vars, it's pretty easy to target whatever you need even with the drupal markup jungle</li>
+              <li>Multiple drupal menus can easily collapse into one mobile menu</li>
+              <li>Top bar has built in features for touch device mobile menus, ie - repeat parent menu item</li>
+            </ul>
+          </section>
+          <section>
+          	<h2>Setup</h2>
+          	<ul>
+          	  <li>For ruby within our current theme setup</li>
+          	  <li>Add a bower_components directory to theme</li>
+          	  <li>Inside add a folder "foundation" <a href="https://github.com/zurb/bower-foundation" target="_blank">containing bower_foundation components</a></li>
+          	  <li>From the<a href="https://github.com/zurb/foundation-compass-template" target="_blank">compass template</a>, grab the bower files, adjust gemfile accordingly, and add the line to import the bower path into the config.rb file</li>
+          	  <li>Add the SCSS to the appropriate folder, and import "app" and "settings"</li>
+          	  <li>Add the foundation.min.js file if desired</li>
+          	</ul>
+          </section>
+          <section>
+          	<h2>Menus</h2>
+          	<ul>
+          	  <li>Multiple drupal menus can easily collapse into one mobile menu</li>
+          	  <li>Top bar has built optionals in features for touch device mobile menus, ie - repeat parent menu item, back</li>
+          	  <li>Use template_menu_link() to add the default Foundation classes if desired</li>
+          	</ul>
+          </section>
+          <section>
+          	<h2>e3_zen_menu_link()</h2>
+          	<pre><code data-trim contenteditable>
+
+function e3_zen_menu_link(&$variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  // if has children add the appropriate foundation menu class
+  if ($element['#original_link']['has_children']) {
+    $element['#attributes']['class'] = 'has-dropdown';
+  }
+
+//  $element['#attributes']['data-menu-parent'] = $element['#original_link']['menu_name'] . '-' . $element['#original_link']['depth'];
+
+  // render sub-menus with the foundation dropdown class
+  if ($element['#below']) {
+    $sub_menu = '<ul class="dropdown">' . drupal_render($element['#below']) . '</ul>';
+  }
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>";
+}
+
+          	</code></pre>
+
+          </section>
+          <section>
+          	<h2>Markup</h2>
+          	<ul>
+          	  <li>Offcanvas will require some simple markup in the page.tpl</li>
+          	  <li>Using topbar as a base for navigation will likely require a bit of restructuring in the header.inc or navigation.inc</li>
+          	</ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Coming Soon(?): Foundation 6</h2>
+          <ul>
+            <li>Combining the two grids with optional flexbox implementation grid</li>
+            <li>Making some features (like topbar) less opinionated than they currently are</li>
+            <li>Complete rewrite of the JS</li>
+            <li>Baseline CSS animation tools</li>
+          </ul>
+        </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
